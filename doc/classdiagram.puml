@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main {
++ static void main (String [] args)
+}
+
+class RickshawService {
+- String [][] districts
+- ArrayList <Driver> drivers
+
++ void createDriver ()
++ void bookDriver ()
+- String findDriver (int districtNumber)
+}
+
+class Driver {
++ String name
++ boolean isBooked
++ int [] districtCoverage
+
++ Driver (String name, int [] districtCoverage)
+}
+
+Main *-- RickshawService
+RickshawService *-- Driver
+
+
+@enduml
