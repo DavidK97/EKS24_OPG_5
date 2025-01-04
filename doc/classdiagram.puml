@@ -9,17 +9,19 @@ class RickshawService {
 - String [][] districts
 - ArrayList <Driver> drivers
 
-+ void createDriver ()
++ void createDriver (String name, int [] districtCoverage)
 + void bookDriver ()
 - String findDriver (int districtNumber)
++ void fillDistrictsArray ()
 }
 
 class Driver {
-+ String name
-+ boolean isBooked
-+ int [] districtCoverage
+- String name
+- boolean isBooked
+- int [] districtCoverage
 
 + Driver (String name, int [] districtCoverage)
++ boolean coverDistrict (int districtNumber)
 }
 
 Main *-- RickshawService

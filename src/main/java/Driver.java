@@ -1,7 +1,7 @@
 public class Driver {
-    public String name;
-    public boolean isBooked;
-    public int [] districtCoverage;
+    private String name;
+    private boolean isBooked;
+    private int [] districtCoverage;
 
 
     public Driver (String name, int [] districtCoverage) {

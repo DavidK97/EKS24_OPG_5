@@ -7,15 +7,10 @@ public class RickshawService {
 
 
     public RickshawService () {
-        this.districts = new String [3][4]; //3 districts, with 3 destinations each
+        this.districts = new String [3][3]; //3 districts, with 3 destinations each
         this.drivers = new ArrayList<>();
         this.ui = new TextUI();
         fillDistrictsArray();
-    }
-
-    public void createDriver (String name, int [] districtNumbers) {
-        Driver driver = new Driver (name, districtNumbers);
-        drivers.add(driver);
     }
 
     public void fillDistrictsArray () {
@@ -24,6 +19,10 @@ public class RickshawService {
         districts[2] = new String[] {"Amalienborg", "Strøget", "Nyhavn"};
     }
 
+    public void createDriver (String name, int [] districtCoverage) {
+        Driver driver = new Driver (name, districtCoverage);
+        drivers.add(driver);
+    }
 
 
     public void bookDriver () {
@@ -35,23 +34,14 @@ public class RickshawService {
                 counter++;
             }
         }
-
-//TODO anden løsning på dette her måske?
         int destination = ui.promptNumeric("Tast tallet for den ønskede destination");
-        switch (destination) {
-            case 1, 2, 3:
-                ui.displayMsg(findDriver(1));
-                break;
-            case 4, 5, 6:
-                ui.displayMsg(findDriver(2));
-                break;
-            case 7, 8, 9:
-                ui.displayMsg(findDriver(3));
-                break;
-            default:
-                ui.displayMsg("Venligt indtast kun tal fra listen");
-                bookDriver();
-                break;
+
+        int districtNumber = ((destination - 1) / 3) + 1;
+        if (districtNumber >= 1 && districtNumber <= districts.length) {
+            ui.displayMsg(findDriver(districtNumber));
+        } else {
+            ui.displayMsg("Venligt indtast kun tal fra listen");
+            bookDriver();
         }
     }
 
